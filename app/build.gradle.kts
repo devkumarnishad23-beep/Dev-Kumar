@@ -11,12 +11,12 @@ plugins {
 
 android {
   namespace = "com.example"
-  compileSdk { version = release(36) { minorApiLevel = 1 } }
+  compileSdk { version = release(34) { minorApiLevel = 1 } }
 
   defaultConfig {
     applicationId = "com.aistudio.jaibajrangakhada.snpl"
     minSdk = 24
-    targetSdk = 36
+    targetSdk = 34
     versionCode = 1
     versionName = "1.0"
 
