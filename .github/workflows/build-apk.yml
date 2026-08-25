@@ -11,10 +11,21 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - uses: gradle/actions/setup-gradle@v3
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+        with:
+          gradle-version: 9.3.1
+
+      - name: Create gradlew if missing
+        run: |
+          if [ ! -f ./gradlew ]; then
+            echo "gradlew not found, creating it..."
+            gradle wrapper --gradle-version 9.3.1
+          fi
+          chmod +x ./gradlew
+          ls -la ./gradlew
+
       - name: Build Debug APK
         run: ./gradlew assembleDebug
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
